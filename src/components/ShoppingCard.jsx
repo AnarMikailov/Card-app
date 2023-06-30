@@ -27,16 +27,22 @@ const ShoppingCard = ({ setOpenCard }) => {
             }
           })}
         </div>
-        <div className="flex justify-between ">
-          <h1 className="p-4 font-bold text-xl">Subtotal</h1>
-          <span className="p-4 font-bold text-xl">{itemPrice}$</span>
-        </div>
-        <div className="flex justify-around justify-self-end">
-          <button onClick={() => setOpenCard(false)} type="button">
-            Continue Shopping
-          </button>
-          <button type="button">Pay</button>
-        </div>
+        {itemPrice > 0 ? (
+          <>
+            <div className="flex justify-between ">
+              <h1 className="p-4 font-bold text-xl">Subtotal</h1>
+              <span className="p-4 font-bold text-xl">{itemPrice}$</span>
+            </div>
+            <div className="flex justify-around justify-self-end">
+              <button onClick={() => setOpenCard(false)} type="button">
+                Continue Shopping
+              </button>
+              <button type="button">Pay</button>
+            </div>
+          </>
+        ) : (
+          <h1>Your card is empty</h1>
+        )}
       </div>
     </>
   );

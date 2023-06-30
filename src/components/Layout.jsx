@@ -16,6 +16,7 @@ const Layout = () => {
       <div className={` h-full w-full ${openCard ? 'overlay' : ''}`}>
         {openCard && <ShoppingCard setOpenCard={setOpenCard} />}
       </div>
+
       {/* <header></header> */}
       <main className="main-container">{/* <Outlet /> */}</main>
       <footer>{/* <Footer /> */}</footer>

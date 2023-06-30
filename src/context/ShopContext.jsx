@@ -6,6 +6,7 @@ const StateContext = createContext();
 export const ContextProvider = ({ children }) => {
   const [data, setData] = useState(data1);
   const [cartItems, setCartItems] = useState(getDefaultCart());
+  const [favourities, setFavourities] = useState(getDefaultCart());
 
   function getDefaultCart() {
     const array = [...data];
@@ -25,6 +26,15 @@ export const ContextProvider = ({ children }) => {
   };
   const updateCardItem = (newAmount, itemID) => {
     setCartItems(prev => ({ ...prev, [itemID]: newAmount }));
+  };
+  const deleteFromCart = itemID => {
+    setCartItems(prev => ({ ...prev, [itemID]: 0 }));
+  };
+  const addToFavourities = itemID => {
+    setFavourities(prev => ({ ...prev, [itemID]: 1 }));
+  };
+  const removeFromFavourities = itemID => {
+    setFavourities(prev => ({ ...prev, [itemID]: 0 }));
   };
   // console.log(cartItems);s
   // const fetchData = async () => {
@@ -73,6 +83,11 @@ export const ContextProvider = ({ children }) => {
         cartItems,
         setCartItems,
         updateCardItem,
+        deleteFromCart,
+        addToFavourities,
+        favourities,
+        setFavourities,
+        removeFromFavourities,
       }}
     >
       {children}

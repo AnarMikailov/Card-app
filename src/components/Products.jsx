@@ -4,19 +4,27 @@ import { useStateContext } from '../context/ShopContext';
 
 // eslint-disable-next-line react/prop-types
 const Products = ({ name, img, price, id }) => {
-  const { addToCart, cartItems } = useStateContext();
-  const [favorities, setFavorities] = useState(false);
+  const {
+    addToCart,
+    cartItems,
+    addToFavourities,
+    favourities,
+    removeFromFavourities,
+  } = useStateContext();
+  const [openfavorities, setOpenFavorities] = useState(false);
+  console.log(favourities);
   let cartItemAmount = 0;
   cartItemAmount = cartItems[id];
   return (
     <>
       <div className="flex justify-between relative h-[25rem] flex-col p-2 m-2 shadow-lg w-72">
         <div
-          onClick={() => setFavorities(!favorities)}
+          onClick={() => setOpenFavorities(!openfavorities)}
           className="absolute right-2 top-3"
         >
-          {favorities ? (
+          {openfavorities ? (
             <svg
+              onClick={() => removeFromFavourities(id)}
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="red"
@@ -26,6 +34,7 @@ const Products = ({ name, img, price, id }) => {
             </svg>
           ) : (
             <svg
+              onClick={() => addToFavourities(id)}
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"

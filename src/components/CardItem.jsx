@@ -2,8 +2,13 @@ import { useStateContext } from '../context/ShopContext';
 
 // eslint-disable-next-line react/prop-types
 const CardItem = ({ name, id, price }) => {
-  const { cartItems, addToCart, removeFromCart, updateCardItem } =
-    useStateContext();
+  const {
+    cartItems,
+    addToCart,
+    removeFromCart,
+    updateCardItem,
+    deleteFromCart,
+  } = useStateContext();
   return (
     <div className="flex flex-row-reverse justify-between gap-4 font-bold text-xs md:text-xl p-3 m-3 ">
       <div className="w-25 h-25">
@@ -29,6 +34,7 @@ const CardItem = ({ name, id, price }) => {
             />
             <button onClick={() => removeFromCart(id)}>-</button>
           </div>
+          <button onClick={() => deleteFromCart(id)}>x</button>
         </div>
       </div>
     </div>
