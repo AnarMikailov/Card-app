@@ -1,5 +1,5 @@
-import { createContext, useState, useContext } from 'react';
-import { data1 } from '../data/data';
+import { createContext, useState, useContext } from "react";
+import { data1 } from "../data/data";
 const StateContext = createContext();
 
 // eslint-disable-next-line react/prop-types
@@ -7,6 +7,7 @@ export const ContextProvider = ({ children }) => {
   const [data, setData] = useState(data1);
   const [cartItems, setCartItems] = useState(getDefaultCart());
   const [favourities, setFavourities] = useState(getDefaultCart());
+  const [productdetails, setProductDetails] = useState(getDefaultCart());
 
   function getDefaultCart() {
     const array = [...data];
@@ -18,24 +19,28 @@ export const ContextProvider = ({ children }) => {
     }
     return result;
   }
-  const addToCart = itemID => {
-    setCartItems(prev => ({ ...prev, [itemID]: prev[itemID] + 1 }));
+  const addToCart = (itemID) => {
+    setCartItems((prev) => ({ ...prev, [itemID]: prev[itemID] + 1 }));
   };
-  const removeFromCart = itemID => {
-    setCartItems(prev => ({ ...prev, [itemID]: prev[itemID] - 1 }));
+  const removeFromCart = (itemID) => {
+    setCartItems((prev) => ({ ...prev, [itemID]: prev[itemID] - 1 }));
   };
   const updateCardItem = (newAmount, itemID) => {
-    setCartItems(prev => ({ ...prev, [itemID]: newAmount }));
+    setCartItems((prev) => ({ ...prev, [itemID]: newAmount }));
   };
-  const deleteFromCart = itemID => {
-    setCartItems(prev => ({ ...prev, [itemID]: 0 }));
+  const deleteFromCart = (itemID) => {
+    setCartItems((prev) => ({ ...prev, [itemID]: 0 }));
   };
-  const addToFavourities = itemID => {
-    setFavourities(prev => ({ ...prev, [itemID]: 1 }));
+  const addToFavourities = (itemID) => {
+    setFavourities((prev) => ({ ...prev, [itemID]: 1 }));
   };
-  const removeFromFavourities = itemID => {
-    setFavourities(prev => ({ ...prev, [itemID]: 0 }));
+  const removeFromFavourities = (itemID) => {
+    setFavourities((prev) => ({ ...prev, [itemID]: 0 }));
   };
+  // const addToProductDetails = (itemID) => {
+  //   setProductDetails((prev) => ({ ...prev, [itemID]: prev[itemID] + 1 }));
+  // };
+  // console.log(productdetails);
   // console.log(cartItems);s
   // const fetchData = async () => {
   //   const url =
@@ -88,6 +93,8 @@ export const ContextProvider = ({ children }) => {
         favourities,
         setFavourities,
         removeFromFavourities,
+        // addToProductDetails,
+        productdetails,
       }}
     >
       {children}

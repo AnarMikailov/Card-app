@@ -1,8 +1,8 @@
-import ProductList from './components/ProductList';
-import { Route, Routes } from 'react-router-dom';
-import Products from './components/Products';
-import ProductDetails from './components/ProductDetails';
-import FavouriteList from './components/FavouriteList';
+import ProductList from "./components/ProductList";
+import { Route, Routes } from "react-router-dom";
+import Products from "./components/Products";
+import ProductDetails from "./components/ProductDetails";
+import FavouriteList from "./components/FavouriteList";
 
 function App() {
   //Implmenting React Router 6.4+
@@ -33,7 +33,7 @@ function App() {
       <Routes>
         <Route path="/" element={<ProductList />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/productdetails" element={<ProductDetails />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/favouritielist" element={<FavouriteList />} />
       </Routes>
     </>
