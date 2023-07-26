@@ -8,6 +8,7 @@ export const ContextProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
   const [favourities, setFavourities] = useState(getDefaultCart());
   const [productdetails, setProductDetails] = useState(getDefaultCart());
+  const [openCard, setOpenCard] = useState(false);
 
   function getDefaultCart() {
     const array = [...data];
@@ -19,6 +20,9 @@ export const ContextProvider = ({ children }) => {
     }
     return result;
   }
+  const handleOpen = () => {
+    setOpenCard(!openCard);
+  };
   const addToCart = (itemID) => {
     setCartItems((prev) => ({ ...prev, [itemID]: prev[itemID] + 1 }));
   };
@@ -95,6 +99,9 @@ export const ContextProvider = ({ children }) => {
         removeFromFavourities,
         // addToProductDetails,
         productdetails,
+        handleOpen,
+        openCard,
+        setOpenCard,
       }}
     >
       {children}
